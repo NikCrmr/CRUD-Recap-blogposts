@@ -2,18 +2,23 @@ import styled from "styled-components";
 import Link from "next/link";
 // name your list resource in the page props
 // and map over it to render it
-export default function IndexPage({ blogposts }) {
+export default function IndexPage({ blogposts, toggleFavorites }) {
   console.log("blogposts!", blogposts);
   return (
     <>
       <StyledH1>Frontend Recap</StyledH1>
       <StyledList>
         {blogposts.map(({ id, title, isFavorite }) => (
-          <Link href={`/posts/${id}`}>
+          <>
             <StyledListElement isFavorite={isFavorite} key={id}>
-              {title}
+              <Link href={`/posts/${id}`}>{title}</Link>
             </StyledListElement>
-          </Link>
+            <button onClick={() => toggleFavorites(id)}>
+              {isFavorite ? "👍" : "👎"}
+            </button>
+            <button>📝</button>
+            <button>𝐗</button>
+          </>
         ))}
       </StyledList>
     </>
