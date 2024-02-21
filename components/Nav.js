@@ -6,6 +6,7 @@ export default function Nav() {
     <nav className={styles.nav}>
       <Link href="/">Home</Link>
       <Link href="/fav/">Favorites</Link>
+      <Link href="/slider/">Slider</Link>
     </nav>
   );
 }
