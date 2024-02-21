@@ -12,10 +12,10 @@ export default function Slider() {
     if (decNumber <= 41) {
       return <StyledEmoji>😢</StyledEmoji>;
     }
-    if (decNumber >= 42 && decNumber <= 45 && decNumber < 55) {
+    if (decNumber >= 42 && decNumber < 59) {
       return <StyledEmoji>😇</StyledEmoji>;
     }
-    if (decNumber > 55) {
+    if (decNumber > 59) {
       return <StyledEmoji>🥳</StyledEmoji>;
     }
   }
