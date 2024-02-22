@@ -1,7 +1,7 @@
 import Form from "@/components/Form";
 import { useRouter } from "next/router";
 
-export default function EditView({ blogposts }) {
+export default function EditView({ blogposts, editPost }) {
   const router = useRouter();
   const { id } = router.query;
   const currentPost = blogposts.find((post) => post.id == id);

@@ -25,6 +25,12 @@ export default function App({ Component, pageProps }) {
     setBlogposts(blogposts.filter((post) => post.id !== id));
   }
 
+  function editPost(post) {
+    setBlogposts((prev) =>
+      prev.map((x) => (x.id === post.id ? { ...x, ...post } : x))
+    );
+  }
+
   return (
     <>
       <Nav />
@@ -34,6 +40,7 @@ export default function App({ Component, pageProps }) {
           deletePost={deletePost}
           setBlogposts={setBlogposts}
           addNewPost={addNewPost}
+          editPost={editPost}
           blogposts={blogposts}
           {...pageProps}
         />
