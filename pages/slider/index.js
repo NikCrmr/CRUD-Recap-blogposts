@@ -45,6 +45,7 @@ export default function Slider() {
           name="rangeInput"
           value={rangeValue}
           onChange={handleRangeChange}
+          defaultValue={127.5}
         />
       </form>
       <StyledColorRange rangeValue={rangeValue}></StyledColorRange>
