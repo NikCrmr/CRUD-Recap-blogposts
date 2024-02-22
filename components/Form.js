@@ -49,7 +49,7 @@ export default function Form({ currentPost, onSubmit }) {
         <label>
           Image-URL
           <input
-            name="Image"
+            name="image"
             placeholder="Enter the image url"
             defaultValue={currentPost?.image}
           ></input>
