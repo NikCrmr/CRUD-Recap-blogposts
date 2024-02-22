@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { nanoid } from "nanoid";
 
 export default function Slider() {
   const [rangeValue, setRangeValue] = useState(50);
@@ -9,27 +10,43 @@ export default function Slider() {
   function Emoji() {
     const decNumber = rangeValue / 2.55;
     console.log("decNumber", decNumber);
-    if (decNumber <= 41) {
+    if (decNumber <= 23) {
+      return <StyledEmoji>😭</StyledEmoji>;
+    }
+    if (decNumber >= 23 && decNumber <= 41) {
       return <StyledEmoji>😢</StyledEmoji>;
     }
     if (decNumber >= 42 && decNumber <= 59) {
       return <StyledEmoji>😇</StyledEmoji>;
     }
-    if (decNumber > 59) {
+    if (decNumber >= 60 && decNumber <= 73) {
+      return <StyledEmoji>😃</StyledEmoji>;
+    }
+    if (decNumber > 73) {
       return <StyledEmoji>🥳</StyledEmoji>;
     }
   }
   console.log("rangeValue", rangeValue);
   return (
     <>
-      <label>How do you feel about this website?</label>
-      <input
-        type="range"
-        min={0}
-        max={255}
-        value={rangeValue}
-        onChange={handleRangeChange}
-      />
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          const rangeInputValue = event.target.elements.rangeInput.value;
+          const [colorValue, setColorValue] = useState([]);
+          setColorValue([{ id: nanoid(), rating, comment }, ...reviews]);
+        }}
+      >
+        <label>How do you feel about this website?</label>
+        <input
+          type="range"
+          min={0}
+          max={255}
+          name="rangeInput"
+          value={rangeValue}
+          onChange={handleRangeChange}
+        />
+      </form>
       <StyledColorRange rangeValue={rangeValue}></StyledColorRange>
       <Emoji />
     </>

@@ -16,7 +16,7 @@ export default function IndexPage({ blogposts, toggleFavorites }) {
             <button onClick={() => toggleFavorites(id)}>
               {isFavorite ? "👍" : "👎"}
             </button>
-            <button>📝</button>
+            <button href={`/posts/${id}/edit`}>📝</button>
             <button>𝐗</button>
           </>
         ))}
