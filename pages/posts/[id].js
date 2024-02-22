@@ -33,6 +33,10 @@ export default function SingleBlogpost({
           objectFit="cover"
         ></Image>
       </StyledDiv>
+      <StyledLink href={"../"}>🔙Back</StyledLink>
+      <p>
+        categrories: <Link href="/">#{currentPost.category}</Link>
+      </p>
       <StyledSpan>{currentPost.isFavorite ? "👍" : "👎"}</StyledSpan>
 
       <StyledButton onClick={() => toggleFavorites(router.query.id)}>
@@ -43,16 +47,23 @@ export default function SingleBlogpost({
       </Link>
       <StyledButton onClick={handleDelete}>𝐗</StyledButton>
       <br />
-      <Link href={"../"}>Back</Link>
     </div>
   );
 }
+
+const StyledLink = styled(Link)`
+  font-size: 120%;
+  &:active {
+    background-color: yellow;
+    transition: background-color 1sec;
+  }
+`;
 
 const StyledSpan = styled.span`
   border-radius: 50%;
   background-color: #cc8ea0;
   position: absolute;
-  bottom: 4%;
+  bottom: 12%;
   right: 45%;
   font-size: 4rem;
   padding: 1rem;
