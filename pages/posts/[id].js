@@ -2,13 +2,23 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import styled from "styled-components";
 import Link from "next/link";
-export default function SingleBlogpost({ blogposts, toggleFavorites }) {
+export default function SingleBlogpost({
+  blogposts,
+  toggleFavorites,
+  deletePost,
+}) {
   const router = useRouter();
   const { id } = router.query;
   const currentPost = blogposts.find((post) => post.id == id);
 
   if (!currentPost) {
     return <p>Post not found</p>;
+  }
+
+  function handleDelete() {
+    console.log("id.js handleDelete router.query.id", router.query.id);
+    deletePost(router.query.id);
+    router.push("/");
   }
   return (
     <div>
@@ -28,6 +38,10 @@ export default function SingleBlogpost({ blogposts, toggleFavorites }) {
       <StyledButton onClick={() => toggleFavorites(router.query.id)}>
         {currentPost.isFavorite == false ? "Like it😀" : "Unlike👎"}
       </StyledButton>
+      <Link href={`/posts/${id}/edit`}>
+        <StyledButton>📝</StyledButton>
+      </Link>
+      <StyledButton onClick={handleDelete}>𝐗</StyledButton>
       <br />
       <Link href={"../"}>Back</Link>
     </div>

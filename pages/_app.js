@@ -3,6 +3,7 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import data from "../data.json";
 import "../styles/global.css";
+import { nanoid } from "nanoid";
 
 export default function App({ Component, pageProps }) {
   const [blogposts, setBlogposts] = useState(data);
@@ -14,13 +15,25 @@ export default function App({ Component, pageProps }) {
       )
     );
   }
+
+  function addNewPost(post) {
+    setBlogposts((prev) => [...prev, { ...post, id: nanoid() }]);
+  }
+  function deletePost(id) {
+    console.log("deletePost id", id);
+    // The filter method returns any id that does not match the current one and deletes it like this
+    setBlogposts(blogposts.filter((post) => post.id !== id));
+  }
+
   return (
     <>
       <Nav />
       <main>
         <Component
           toggleFavorites={toggleFavorites}
+          deletePost={deletePost}
           setBlogposts={setBlogposts}
+          addNewPost={addNewPost}
           blogposts={blogposts}
           {...pageProps}
         />

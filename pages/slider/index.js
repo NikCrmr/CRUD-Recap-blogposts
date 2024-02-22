@@ -65,3 +65,14 @@ const StyledColorRange = styled.div`
 const StyledEmoji = styled.span`
   font-size: 4rem;
 `;
+
+/*
+const gradientColor1 = `hsl(${(props.rangeValue / 255) * 120}, 100%, 50%)`;
+const gradientColor2 = `hsl(${((props.rangeValue + 50) / 255) * 120}, 100%, 50%)`;
+
+const gradientStyle = {
+  background: `linear-gradient(to right, ${gradientColor1}, ${gradientColor2})`,
+  height: '100px', // Set the height as needed
+};
+
+*/

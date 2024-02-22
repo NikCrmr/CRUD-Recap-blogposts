@@ -2,8 +2,20 @@ import styled from "styled-components";
 import Link from "next/link";
 // name your list resource in the page props
 // and map over it to render it
-export default function IndexPage({ blogposts, toggleFavorites }) {
+export default function IndexPage({ blogposts, toggleFavorites, deletePost }) {
   console.log("blogposts!", blogposts);
+  function handleDeleteIndex(id) {
+    const pureNumber = Number(id);
+    console.log(pureNumber);
+
+    // Check if the conversion was successful and the result is a finite number
+    if (!isNaN(pureNumber) && isFinite(pureNumber)) {
+      // Use the pureNumber in deletePost
+      deletePost(pureNumber);
+    } else {
+      console.error(`Invalid 'id' value: ${id}`);
+    }
+  }
   return (
     <>
       <StyledH1>Frontend Recap</StyledH1>
@@ -16,8 +28,10 @@ export default function IndexPage({ blogposts, toggleFavorites }) {
             <button onClick={() => toggleFavorites(id)}>
               {isFavorite ? "👍" : "👎"}
             </button>
-            <button href={`/posts/${id}/edit`}>📝</button>
-            <button>𝐗</button>
+            <Link href={`/posts/${id}/edit`}>
+              <button>📝</button>
+            </Link>
+            <button onClick={() => handleDeleteIndex(id)}>𝐗</button>
           </>
         ))}
       </StyledList>
