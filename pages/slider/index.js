@@ -3,7 +3,7 @@ import { useState } from "react";
 import { nanoid } from "nanoid";
 
 export default function Slider() {
-  const [rangeValue, setRangeValue] = useState(50);
+  const [rangeValue, setRangeValue] = useState(127.5);
   const handleRangeChange = (event) => {
     setRangeValue(event.target.value);
   };
@@ -45,7 +45,6 @@ export default function Slider() {
           name="rangeInput"
           value={rangeValue}
           onChange={handleRangeChange}
-          defaultValue={127.5}
         />
       </form>
       <StyledColorRange rangeValue={rangeValue}></StyledColorRange>
